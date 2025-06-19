@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Исправительная колония №14</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .prison-bg {
+            background-image: url('https://images.unsplash.com/photo-1582053433976-0c3934f15b7b?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .page-transition {
+            transition: opacity 0.5s ease;
+        }
+        .hidden-page {
+            opacity: 0;
+            display: none;
+        }
+        .visible-page {
+            opacity: 1;
+            display: block;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Навигация -->
+    <nav class="bg-gray-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-gavel text-2xl text-yellow-500"></i>
+                <span class="text-xl font-bold">ИК-14</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" onclick="showPage('home')" class="nav-link hover:text-yellow-500 transition">Главная</a>
+                <a href="#" onclick="showPage('about')" class="nav-link hover:text-yellow-500 transition">О колонии</a>
+                <a href="#" onclick="showPage('gallery')" class="nav-link hover:text-yellow-500 transition">Галерея</a>
+                <a href="#" onclick="showPage('contacts')" class="nav-link hover:text-yellow-500 transition">Контакты</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Мобильное меню -->
+        <div class="md:hidden hidden bg-gray-800" id="mobile-menu">
+            <div class="px-4 py-2 flex flex-col space-y-3">
+                <a href="#" onclick="showPage('home')" class="nav-link hover:text-yellow-500 transition">Главная</a>
+                <a href="#" onclick="showPage('about')" class="nav-link hover:text-yellow-500 transition">О колонии</a>
+                <a href="#" onclick="showPage('gallery')" class="nav-link hover:text-yellow-500 transition">Галерея</a>
+                <a href="#" onclick="showPage('contacts')" class="nav-link hover:text-yellow-500 transition">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <div id="home-page" class="page-transition visible-page">
+        <header class="prison-bg text-white min-h-screen flex items-center">
+            <div class="overlay w-full h-full absolute"></div>
+            <div class="container mx-auto px-4 py-20 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Исправительная колония №14</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Федеральное казённое учреждение "Исправительная колония №14 УФСИН России"</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <button onclick="showPage('about')" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition">
+                        Подробнее об учреждение
+                    </button>
+                    <button onclick="showPage('contacts')" class="bg-transparent hover:bg-gray-800 border-2 border-white text-white font-bold py-3 px-6 rounded-lg transition">
+                        Контактная информация
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Основные направления деятельности</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <div class="text-yellow-500 text-4xl mb-4">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Обеспечение безопасности</h3>
+                        <p>Охрана и конвоирование осужденных, предотвращение правонарушений на территории учреждения.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <div class="text-yellow-500 text-4xl mb-4">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Трудовая деятельность</h3>
+                        <p>Организация производственных участков и рабочих мест для осужденных.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                        <div class="text-yellow-500 text-4xl mb-4">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Образовательные программы</h3>
+                        <p>Обучение осужденных, подготовка к освобождению и ресоциализация в обществе.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">Последние новости</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="photo/new.png" alt="Новость 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Открытие нового цеха</h3>
+                            <p class="text-gray-600 mb-4">15.06.2025</p>
+                            <p>На территории колонии открыт новый швейный цех, где осужденные смогут получить профессиональные навыки.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="photo/podna.jpg" alt="Новость 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Встреча с родственниками</h3>
+                            <p class="text-gray-600 mb-4">02.06.2025</p>
+                            <p>Состоялся день открытых дверей для родственников осужденных с возможностью длительного свидания.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                        <img src="photo/sport.jpg" alt="Новость 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Спортивные соревнования</h3>
+                            <p class="text-gray-600 mb-4">25.05.2025</p>
+                            <p>В колонии прошли ежегодные спортивные соревнования по футболу, настольному теннису и шахматам.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница "О колонии" -->
+    <div id="about-page" class="page-transition hidden-page">
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold text-center mb-12">Об исправительной колонии №14</h1>
+                
+                <div class="flex flex-col lg:flex-row gap-8 mb-16">
+                    <div class="lg:w-1/2">
+                        <img src="photo/dirka.png" alt="Колония" class="w-full rounded-lg shadow-lg">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h2 class="text-2xl font-bold mb-4">История учреждения</h2>
+                        <p class="mb-4">Исправительная колония №14 была основана в 1996 году как учреждение общего режима для содержания осужденных женщин. За годы существования колония неоднократно модернизировалась и расширяла свои производственные мощности.</p>
+                        <p>В настоящее время колония представляет собой современное исправительное учреждение, соответствующее всем международным стандартам содержания осужденных.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-8 rounded-lg shadow-lg mb-16">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Основные характеристики</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <div class="text-yellow-500 text-3xl mb-2">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <p class="font-bold">1200</p>
+                            <p class="text-gray-600">Осужденных</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <div class="text-yellow-500 text-3xl mb-2">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <p class="font-bold">250</p>
+                            <p class="text-gray-600">Сотрудников</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <div class="text-yellow-500 text-3xl mb-2">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <p class="font-bold">8</p>
+                            <p class="text-gray-600">Производств</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <div class="text-yellow-500 text-3xl mb-2">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <p class="font-bold">15</p>
+                            <p class="text-gray-600">Жилых корпусов</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-16">
+                    <h2 class="text-2xl font-bold mb-6">Режим содержания</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="mb-4">Исправительная колония №14 является учреждением общего режима содержания осужденных. На территории колонии функционируют:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Жилые помещения (общежития) для осужденных</li>
+                            <li>Медицинская часть с изолятором</li>
+                            <li>Штаб и административные здания</li>
+                            <li>Производственные зоны</li>
+                            <li>Клубное помещение для культурно-массовых мероприятий</li>
+                            <li>Спортивные площадки</li>
+                            <li>Помещения для длительных и краткосрочных свиданий</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold mb-6">Трудовая деятельность</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <p class="mb-4">В колонии организованы различные виды производственной деятельности, позволяющие осужденным получить профессиональные навыки:</p>
+                        <div class="grid md:grid-cols-2 gap-6 mt-4">
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 mr-4 mt-1">
+                                    <i class="fas fa-tshirt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Швейное производство</h3>
+                                    <p>Пошив спецодежды, униформы и других текстильных изделий</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 mr-4 mt-1">
+                                    <i class="fas fa-wood text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Деревообработка</h3>
+                                    <p>Производство мебели, столярных изделий и строительных материалов</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 mr-4 mt-1">
+                                    <i class="fas fa-box-open text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Упаковочное производство</h3>
+                                    <p>Изготовление картонной и пластиковой упаковки</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-yellow-500 mr-4 mt-1">
+                                    <i class="fas fa-bread-slice text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg">Пищевое производство</h3>
+                                    <p>Выпечка хлебобулочных изделий, производство полуфабрикатов</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Галерея -->
+    <div id="gallery-page" class="page-transition hidden-page">
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold text-center mb-12">Галерея</h1>
+                
+                <div class="mb-8">
+                    <div class="flex flex-wrap gap-4 justify-center mb-6">
+                        <button class="gallery-filter-btn px-4 py-2 rounded-full bg-gray-800 text-white" data-filter="all">Все</button>
+                        <button class="gallery-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="territory">Территория</button>
+                        <button class="gallery-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="production">Производство</button>
+                        <button class="gallery-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300" data-filter="events">Мероприятия</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-container">
+                    <div class="gallery-item territory" data-category="territory">
+                        <img src="photo/dirka.png" alt="Территория колонии" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Главный вход в колонию</p>
+                    </div>
+                    <div class="gallery-item production" data-category="production">
+                        <img src="photo/cex.png" alt="Швейный цех" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Швейный цех</p>
+                    </div>
+                    <div class="gallery-item events" data-category="events">
+                        <img src="photo/sport.jpg" alt="Спортивные соревнования" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Спортивные соревнования</p>
+                    </div>
+                    <div class="gallery-item territory" data-category="territory">
+                        <img src="https://images.unsplash.com/photo-1582053433976-0c3934f15b7b?ixlib=rb-4.0.3" alt="Жилой корпус" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Жилой корпус</p>
+                    </div>
+                    <div class="gallery-item production" data-category="production">
+                        <img src="photo/new.png" alt="Деревообрабатывающий цех" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Новый цех цех</p>
+                    </div>
+                    <div class="gallery-item events" data-category="events">
+                        <img src="https://images.unsplash.com/photo-1581092939401-1cd812ff4d67?ixlib=rb-4.0.3" alt="Концерт в клубе" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Концерт в клубе</p>
+                    </div>
+                    <div class="gallery-item territory" data-category="territory">
+                        <img src="photo/zdanie.jpg" alt="Административное здание" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Административное здание</p>
+                    </div>
+                    <div class="gallery-item production" data-category="production">
+                        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3" alt="Пищеблок" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Пищеблок</p>
+                    </div>
+                    <div class="gallery-item events" data-category="events">
+                        <img src="https://images.unsplash.com/photo-1581093057301-8fc8a8d6e3a8?ixlib=rb-4.0.3" alt="Выставка работ" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        <p class="mt-2 text-center font-medium">Выставка работ осужденных</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <button class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-lg transition">
+                        Загрузить еще
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Контакты -->
+    <div id="contacts-page" class="page-transition hidden-page">
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold text-center mb-12">Контакты</h1>
+                
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/2">
+                        <div class="bg-gray-100 p-8 rounded-lg shadow-lg mb-8">
+                            <h2 class="text-2xl font-bold mb-6">Контактная информация</h2>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="text-yellow-500 mr-4 mt-1">
+                                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Адрес:</h3>
+                                        <p>431150, Россия, Зубово-Полянский район, п. Парца, ул. Лесная, д. 7</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-yellow-500 mr-4 mt-1">
+                                        <i class="fas fa-phone-alt text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Телефоны:</h3>
+                                        <p>+7 (834) 511-46-51 (приемная)</p>
+                                        <p>+7 (834) 511-46-70 (факс)</p>
+                                        <p>+7 (834) 511-46-80 (канцелярия)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-yellow-500 mr-4 mt-1">
+                                        <i class="fas fa-envelope text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Электронная почта:</h3>
+                                        <p>ik14@fsin.ru</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-yellow-500 mr-4 mt-1">
+                                        <i class="fas fa-clock text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">График работы:</h3>
+                                        <p>Понедельник-пятница: 8:00 - 17:00</p>
+                                        <p>Обед: 13:00 - 14:00</p>
+                                        <p>Суббота, воскресенье: выходной</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-100 p-8 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold mb-6">График приема граждан</h2>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white">
+                                    <thead class="bg-gray-200">
+                                        <tr>
+                                            <th class="py-2 px-4 border">Должность</th>
+                                            <th class="py-2 px-4 border">Дни приема</th>
+                                            <th class="py-2 px-4 border">Время</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="py-2 px-4 border">Начальник колонии</td>
+                                            <td class="py-2 px-4 border">Каждый вторник</td>
+                                            <td class="py-2 px-4 border">14:00 - 16:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-4 border">Заместитель начальника</td>
+                                            <td class="py-2 px-4 border">Каждый четверг</td>
+                                            <td class="py-2 px-4 border">10:00 - 12:00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-4 border">Начальник отдела по воспитательной работе</td>
+                                            <td class="py-2 px-4 border">Каждая среда</td>
+                                            <td class="py-2 px-4 border">14:00 - 16:00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-4 text-sm text-gray-600">* Для посещения осужденного необходимо предварительно записаться по телефону.</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-1/2">
+                        <div class="bg-gray-100 p-8 rounded-lg shadow-lg h-full">
+                            <h2 class="text-2xl font-bold mb-6">Схема проезда</h2>
+                            <div class="mb-6">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1464.2961486205284!2d42.857647234386235!3d54.36713959143451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414639cb40607c4d%3A0x780783110f1e3b47!2z0KbQtdGA0LrQvtCy0Ywg0JDQvdCw0YHRgtCw0YHQuNC4INCj0LfQvtGA0LXRiNC40YLQtdC70YzQvdC40YbRiw!5e0!3m2!1sru!2sde!4v1750255150759!5m2!1sru!2sde" width="600" height="450" style="border:0;" al></iframe>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Как добраться:</h3>
+                            <ul class="list-disc pl-6 space-y-2 mb-6">
+                                <li>На всех автобусах которые проходят по Зубово-Полянскому и Темниковскому району</li>
+                            </ul>
+                            <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4">
+                                <p class="text-yellow-700">Внимание! При себе необходимо иметь документ, удостоверяющий личность. Фото- и видеосъемка на территории колонии запрещены.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-gavel text-2xl text-yellow-500 mr-2"></i>
+                        ИК-14
+                    </h3>
+                    <p>Федеральное казённое учреждение "Исправительная колония №14 УФСИН России"</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Навигация</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('home')" class="hover:text-yellow-500 transition">Главная</a></li>
+                        <li><a href="#" onclick="showPage('about')" class="hover:text-yellow-500 transition">О колонии</a></li>
+                        <li><a href="#" onclick="showPage('gallery')" class="hover:text-yellow-500 transition">Галерея</a></li>
+                        <li><a href="#" onclick="showPage('contacts')" class="hover:text-yellow-500 transition">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Контакты</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-yellow-500 mt-1 mr-2"></i>
+                            п. Парца, ул. Лесная, д. 7
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-yellow-500 mt-1 mr-2"></i>
+                            +7 (834) 511-46-90
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-yellow-500 mt-1 mr-2"></i>
+                            ik14@fsin.ru
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Мы в соцсетях</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-odnoklassniki"></i>
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <img src="photo\Gerb.png" alt="Герб ФСИН" class="h-16">
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 ФКУ ИК-14 УФСИН России. Все права защищены.</p>
+                <p class="mt-2 text-sm">Информация на сайте предназначена для лиц старше 18 лет.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Переключение страниц
+        function showPage(pageId) {
+            // Скрыть все страницы
+            document.querySelectorAll('[id$="-page"]').forEach(page => {
+                page.classList.add('hidden-page');
+                page.classList.remove('visible-page');
+            });
+
+            // Показать выбранную страницу
+            const pageToShow = document.getElementById(`${pageId}-page`);
+            pageToShow.classList.remove('hidden-page');
+            pageToShow.classList.add('visible-page');
+
+            // Закрыть мобильное меню, если оно открыто
+            mobileMenu.classList.add('hidden');
+
+            // Прокрутить вверх
+            window.scrollTo(0, 0);
+        }
+
+        // Фильтрация галереи
+        document.querySelectorAll('.gallery-filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Удалить активный класс у всех кнопок
+                document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-gray-800', 'text-white');
+                    btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                });
+
+                // Добавить активный класс к текущей кнопке
+                this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                this.classList.add('bg-gray-800', 'text-white');
+
+                const filter = this.getAttribute('data-filter');
+                const galleryItems = document.querySelectorAll('.gallery-item');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // По умолчанию показать главную страницу
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</html>
